@@ -38,6 +38,8 @@ app.use((req, res, next) => {
 	res.locals.error_msg = req.flash("error_msg");
 	res.locals.error = req.flash("error");
 	res.locals.user = req.user || null;
+	res.locals.data = req.flash("data");
+	if (res.locals.data.length > 0) res.locals.data = res.locals.data[0];
 	next();
 });
 
@@ -46,6 +48,10 @@ app.use(require("./routes/routes"));
 app.use(require("./routes/authentication"));
 app.use(require("./routes/products"));
 app.use(require("./routes/contacts"));
+app.use(require("./routes/admin/routes"));
+// app.use(require("./routes/admin/products"));
+app.use(require("./routes/admin/contacts"));
+app.use(require("./routes/admin/users"));
 
 // static files
 app.use(express.static(path.join(__dirname, "public")));

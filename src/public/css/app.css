@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
+
+
+
+
+body {
+    font-family: 'PT Sans', sans-serif;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+
+.imagen-cuadrada {
+    position: relative;
+    z-index: 0;
+    padding-bottom: 70%;
+}
+
+.imagen-cuadrada img {
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/* ------------------------------------------------------------------ */
+
+
+.carousel {
+    position: relative;
+}
+
+.carousel .opacidad {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 10;
+}
+
+.carousel-caption,
+.carousel-control-prev,
+.carousel-control-next {
+    z-index: 100;
+}
+
+
+
+
+.carousel-inner img {
+    width: 100%;
+}
+
+.carousel-inner,
+.carousel-caption {
+    max-height: 75vh;
+}
+
+.carousel-item {
+    position: relative;
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

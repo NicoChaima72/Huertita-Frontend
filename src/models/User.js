@@ -8,6 +8,7 @@ const UserSchema = new Schema({
 	password: { type: String, required: true },
 	role: { type: String, default: "USER_ROLE" }, // USER_ROLE | ADMIN_ROLE
 	state: { type: String, default: "1" }, // 0 dado de baja | 1 activo | 2 actualizando password
+	date: { type: Date, default: Date.now },
 });
 
 UserSchema.methods.encryptPassword = async (password) => {

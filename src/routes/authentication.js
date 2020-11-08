@@ -5,7 +5,7 @@ const passport = require("passport");
 const User = require("../models/User");
 
 router.get("/login", (req, res) => {
-	res.send("Hola user");
+	res.render("auth/login.html", { title: "Login", file: "login" });
 });
 
 router.post(
@@ -17,7 +17,9 @@ router.post(
 	})
 );
 
-router.get("/register", (req, res) => {});
+router.get("/register", (req, res) => {
+	res.render("auth/register.html", { title: "Registrarse", file: "register" });
+});
 
 router.post("/register", async (req, res) => {
 	const { name, email, password, password_confirm } = req.body;
@@ -36,20 +38,30 @@ router.post("/register", async (req, res) => {
 	}
 
 	if (errors.length > 0) {
-		res.status(404).json({ ok: false, errors });
+		// res.status(404).json({ ok: false, errors });
+		req.flash("error_msg", errors);
+		req.flash("data", { name, email });
+		res.redirect("/register");
 	} else {
 		const emailUser = await User.findOne({ email: email });
 		if (emailUser) {
-			res.status(404).json({
-				ok: false,
-				errors: { text: "El email ya está registrado" },
-			});
+			// res.status(404).json({
+			// 	ok: false,
+			// 	errors: { text: "El email ya está registrado" },
+			// });
+			req.flash("error", "El email ya está registrado");
+			req.flash("data", { name, email });
+			res.redirect("/register");
 		}
 
 		const newUser = new User({ name, email, password });
 		newUser.password = await newUser.encryptPassword(password);
 		await newUser.save();
-		res.json({ ok: true, user: newUser });
+
+		req.flash("success_msg", "Te registraste correctamente");
+		res.redirect("/login");
+
+		// res.json({ ok: true, user: newUser });
 	}
 });
 
@@ -58,7 +70,12 @@ router.post("/logout", (req, res) => {
 	res.redirect("/");
 });
 
-router.get("/reset-password", (req, res) => {});
+router.get("/reset-password", (req, res) => {
+	res.render("auth/reset-password.html", {
+		title: "Resetear contraseña",
+		file: "reset-password",
+	});
+});
 
 router.post("/reset-password", (req, res) => {});
 
