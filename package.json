@@ -22,7 +22,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "npm run src/",
+    "start": "npm run src/index.js",
     "dev": "npm run nodemon",
     "nodemon": "nodemon src/",
     "test": "echo \"Error: no test specified\" && exit 1"
