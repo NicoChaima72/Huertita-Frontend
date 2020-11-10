@@ -125,8 +125,6 @@ router.post("/reset-password", async (req, res) => {
 		);
 		res.redirect("/login");
 	});
-
-	res.redirect("/login");
 });
 
 router.get("/reset-password/:id/:token", async (req, res) => {
