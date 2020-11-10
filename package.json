@@ -15,8 +15,10 @@
     "mongoose": "^5.10.11",
     "mongoose-date-format": "^1.2.0",
     "mongoose-unique-validator": "^2.0.3",
+    "nodemailer": "^6.4.15",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "uniqid": "^5.2.0"
   },
   "devDependencies": {},
   "scripts": {

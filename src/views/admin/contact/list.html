@@ -63,8 +63,8 @@
                     </td>
                     <td>
                         <div class="d-flex">
-                            <button type="button" class="btn btn-warning btn-sm mx-1" data-toggle="modal"
-                                data-target="#modal-<%= order._id %>">
+                            <button type="button" class="btn btn-<% if (order.state === 0) { %>warning<% } else { %>success<% } %> btn-sm
+                                mx-1" data-toggle="modal" data-target="#modal-<%= order._id %>">
                                 <i class="fas fa-eye"></i>
                             </button>
                             <button class="btn btn-outline-danger btn-sm mx-1" onclick="confirm('Este pedido se eliminara ¿Estás seguro?') ?

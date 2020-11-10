@@ -4,7 +4,7 @@ const User = require("../../models/User");
 
 const { isAuthenticated, isAdmin } = require("../../helpers/auth");
 
-router.get("/admin/users", async (req, res) => {
+router.get("/admin/users", [isAuthenticated, isAdmin], async (req, res) => {
 	const users = await User.find();
 
 	res.render("admin/user/list.html", {
@@ -14,7 +14,7 @@ router.get("/admin/users", async (req, res) => {
 	});
 });
 
-router.delete("/admin/users/:id", (req, res) => {
+router.delete("/admin/users/:id", [isAuthenticated, isAdmin], (req, res) => {
 	const id = req.params.id;
 
 	User.findByIdAndRemove(id, (err, user) => {

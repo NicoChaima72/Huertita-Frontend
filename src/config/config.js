@@ -9,6 +9,12 @@ process.env.PORT = process.env.PORT || 3000;
 process.env.NODE_ENV = process.env.NODE_ENV || "dev";
 
 /**
+ * * HOSTNAME * */
+
+process.env.HOSTNAME =
+	process.env.HOSTNAME || `http://localhost:${process.env.PORT}`;
+
+/**
  *  * MONGO CONNECTION * */
 
 let urlDB;

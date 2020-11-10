@@ -7,11 +7,14 @@ passport.use(
 	new LocalStrategy(
 		{
 			usernameField: "email",
+			passwordField: "password",
+			passReqToCallback: true,
 		},
-		async (email, password, done) => {
+		async (req, email, password, done) => {
 			const user = await User.findOne({ email: email });
 			if (!user) {
 				// done(error, return usuario, mensaje)
+				req.flash("data", { email, password });
 				return done(null, false, {
 					message: "Email y/o contraseña incorrectos",
 				});
@@ -20,6 +23,7 @@ passport.use(
 				if (match) {
 					return done(null, user);
 				} else {
+					req.flash("data", { email, password });
 					return done(null, false, {
 						message: "Email y/o contraseña incorrectos",
 					});
