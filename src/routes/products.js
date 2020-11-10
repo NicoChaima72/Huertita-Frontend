@@ -12,9 +12,16 @@ router.get("/product", async (req, res) => {
 	});
 });
 
-router.post("/product", (req, res) => {});
+router.get("/product/:id", async (req, res) => {
+	const product = await Product.findById(req.params.id);
+	res.render("pages/product.html", {
+		title: product.name + " - ver producto",
+		file: "",
+		product,
+	});
+});
 
-router.get("/product/:id", (req, res) => {});
+router.post("/product", (req, res) => {});
 
 router.put("/product/:id", (req, res) => {});
 

@@ -14,7 +14,7 @@
             <div class="carousel-caption">
                 <h5 class="h2">Productos frescos y de primera</h5>
                 <p>Si no nos crees, pruebalos tu mismo.</p>
-                <a href="/pages/productos.html" class="btn btn-outline-light w-50 mx-auto">Ver productos</a>
+                <a href="/product" class="btn btn-outline-light w-50 mx-auto">Ver productos</a>
             </div>
         </div>
         <div class="carousel-item">
@@ -23,7 +23,7 @@
             <div class="carousel-caption">
                 <h5 class="h2">Las mejores frutas y verduras de todo el mundo</h5>
                 <p>Conocenos, no te arrepentiras</p>
-                <a href="/pages/contacto.html" class="btn btn-outline-light w-50 mx-auto">Enviar mensaje</a>
+                <a href="/contact" class="btn btn-outline-light w-50 mx-auto">Enviar mensaje</a>
             </div>
         </div>
         <div class="carousel-item">
@@ -53,7 +53,7 @@
         <% products.forEach((product) => { %>
         <div class="col-6 col-md-4 mb-3 p-1">
             <a href="/product/<%= product._id %>" class="card rounded-lg">
-                <div class="imagen-cuadrada">
+                <div class="imagen-rectangular">
                     <img src="/img/products/<%= product.photo_url %>" class="card-img-top rounded-lg" alt="...">
                 </div>
                 <div class="card-body">
@@ -71,7 +71,7 @@
         <% }) %>
     </div>
     <div class="w-100 text-center mt-3 mb-5">
-        <a href="./pages/productos.html" class="btn btn-success mx-auto">Ver todos los productos</a>
+        <a href="/product" class="btn btn-success mx-auto">Ver todos los productos</a>
     </div>
 </div>
 
