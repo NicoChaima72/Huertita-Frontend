@@ -9,7 +9,7 @@ router.get("/admin/contacts", async (req, res) => {
 
 	res.render("admin/contact/list.html", {
 		title: "Lista pedidos",
-		file: "admin.list",
+		file: "admin.contacts",
 		orders: contacts,
 	});
 });

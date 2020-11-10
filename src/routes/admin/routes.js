@@ -6,7 +6,7 @@ const { isAuthenticated, isAdmin } = require("../../helpers/auth");
 router.get("/admin", (req, res) => {
 	res.render("admin/dashboard.html", {
 		title: "ADMIN Dashboard",
-		file: "admin.dashboard",
+		file: "admin.home",
 	});
 });
 

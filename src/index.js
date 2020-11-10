@@ -5,6 +5,7 @@ const methodOverride = require("method-override");
 const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("passport");
+const fileUpload = require("express-fileupload");
 
 // initializations
 const app = express();
@@ -49,9 +50,10 @@ app.use(require("./routes/authentication"));
 app.use(require("./routes/products"));
 app.use(require("./routes/contacts"));
 app.use(require("./routes/admin/routes"));
-// app.use(require("./routes/admin/products"));
+app.use(require("./routes/admin/products"));
 app.use(require("./routes/admin/contacts"));
 app.use(require("./routes/admin/users"));
+app.use(require("./routes/admin/upload"));
 
 // static files
 app.use(express.static(path.join(__dirname, "public")));

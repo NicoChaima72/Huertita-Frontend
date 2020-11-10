@@ -31,6 +31,18 @@ a {
     height: 100%;
 }
 
+.imagen-rectangular {
+    position: relative;
+    z-index: 0;
+    padding-bottom: 56.2%;
+}
+
+.imagen-rectangular img {
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
 
 
 /* ------------------------------------------------------------------ */

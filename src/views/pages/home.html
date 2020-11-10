@@ -46,22 +46,29 @@
 </div>
 
 <div class="container mt-5">
-    <h2 class="d-block d-md-none h1">Productos populares</h2>
-    <h2 class="d-none d-md-block display-5">Productos populares</h2>
+    <h2 class="d-block d-md-none h1">Ultimos productos</h2>
+    <h2 class="d-none d-md-block display-5">Ultimos productos</h2>
     <hr>
     <div class="row">
+        <% products.forEach((product) => { %>
         <div class="col-6 col-md-4 mb-3 p-1">
-            <div class="card rounded-lg">
+            <a href="/product/<%= product._id %>" class="card rounded-lg">
                 <div class="imagen-cuadrada">
-                    <img src="https://resizer.sevilla.abc.es/resizer/resizer.php?imagen=https://sevilla.abc.es/gurme//wp-content/uploads/sites/24/2016/07/tomate-un-super-alimento.jpg&nuevoancho=1920"
-                        class="card-img-top rounded-lg" alt="...">
+                    <img src="/img/products/<%= product.photo_url %>" class="card-img-top rounded-lg" alt="...">
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Tomates</h5>
-
+                    <h5 class="card-title text-dark"><%= product.name %></h5>
+                    <p class="text-muted">
+                        <% if (product.description.length > 60) { %>
+                        <%=   product.description.substring(0, 60) %> ...
+                        <% } else { %>
+                        <%= product.description %>
+                        <% } %>
+                    </p>
                 </div>
-            </div>
+            </a>
         </div>
+        <% }) %>
         <div class="col-6 col-md-4 mb-3 p-1">
             <div class="card rounded-lg">
                 <div class="imagen-cuadrada">

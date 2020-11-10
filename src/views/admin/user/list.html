@@ -16,8 +16,8 @@
         <table id="dataTable" class="table table-bordered table-hover">
             <thead>
                 <tr>
-                    <th class="d-none">Fecha</th>
                     <th>Email</th>
+                    <th class="d-none">Fecha</th>
                     <th>Nombre</th>
                     <th>Rol</th>
                     <th></th>
@@ -26,8 +26,8 @@
             <tbody>
                 <% users.forEach((user) => { %>
                 <tr>
-                    <td class="d-none"><%= user.date %></td>
                     <td><%= user.email %></td>
+                    <td class="d-none"><%= user.date %></td>
                     <td><%= user.name %></td>
                     <td><%= user.role %></td>
                     <td>
@@ -71,7 +71,7 @@
             "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
         },
         "order": [
-            [0, "desc"]
+            [1, "desc"]
         ]
     });
 </script>

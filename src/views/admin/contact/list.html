@@ -15,8 +15,8 @@
         <table id="dataTable" class="table table-bordered table-hover">
             <thead>
                 <tr>
-                    <th class="d-none">Fecha</th>
                     <th>Fecha</th>
+                    <th class="d-none">Fecha</th>
                     <th>E</th>
                     <th>Mensaje</th>
                     <th>Email</th>
@@ -27,11 +27,11 @@
             <tbody>
                 <% orders.forEach((order) => { %>
                 <tr>
-                    <td class="d-none">
-                        <%= order.date %>
-                    </td>
                     <td>
                         <%= order.dateShow %>
+                    </td>
+                    <td class="d-none">
+                        <%= order.date %>
                     </td>
                     <td>
                         <% if (order.state === 0) { %>
@@ -162,7 +162,7 @@
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
         },
-        "order": [0, "desc"]
+        "order": [1, "asc"]
     });
 </script>
 
