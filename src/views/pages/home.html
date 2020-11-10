@@ -58,13 +58,14 @@
                 </div>
                 <div class="card-body">
                     <h5 class="card-title text-dark"><%= product.name %></h5>
-                    <p class="text-muted">
+                    <p class="text-muted m-0">
                         <% if (product.description.length > 60) { %>
                         <%=   product.description.substring(0, 60) %> ...
                         <% } else { %>
                         <%= product.description %>
                         <% } %>
                     </p>
+                    <p class="text-success m-0 lead">$<%= product.price %></p>
                 </div>
             </a>
         </div>
