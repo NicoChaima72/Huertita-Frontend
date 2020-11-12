@@ -42,10 +42,6 @@ router.post("/contact", async (req, res) => {
 	res.redirect("/contact");
 });
 
-router.get("/contact/:id", (req, res) => {});
 
-router.put("/contact/:id", (req, res) => {});
-
-router.delete("/contact/:id", (req, res) => {});
 
 module.exports = router;
