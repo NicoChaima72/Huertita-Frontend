@@ -24,15 +24,15 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 app.use(
-	session({
-		cookie: { maxAge: 86400000 },
-		store: new MemoryStore({
-			checkPeriod: 86400000, // prune expired entries every 24h
-		}),
-		secret: "session_secret",
-		resave: false,
-		saveUninitialized: true,
-	})
+  session({
+    cookie: { maxAge: 86400000 },
+    store: new MemoryStore({
+      checkPeriod: 86400000, // prune expired entries every 24h
+    }),
+    secret: "session_secret",
+    resave: false,
+    saveUninitialized: true,
+  })
 );
 app.use(passport.initialize());
 app.use(passport.session());
@@ -40,13 +40,14 @@ app.use(flash());
 
 // global variables
 app.use((req, res, next) => {
-	res.locals.success_msg = req.flash("success_msg");
-	res.locals.error_msg = req.flash("error_msg");
-	res.locals.error = req.flash("error");
-	res.locals.user = req.user || null;
-	res.locals.data = req.flash("data");
-	if (res.locals.data.length > 0) res.locals.data = res.locals.data[0];
-	next();
+  res.locals.success_msg = req.flash("success_msg");
+  res.locals.error_msg = req.flash("error_msg");
+  res.locals.error = req.flash("error");
+  res.locals.user = req.user || null;
+  res.locals.data = req.flash("data");
+  res.locals.API = process.env.API;
+  if (res.locals.data.length > 0) res.locals.data = res.locals.data[0];
+  next();
 });
 
 // routes
@@ -65,5 +66,5 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // listen server
 app.listen(app.get("port"), () => {
-	console.log("Server run in port ", app.get("port"));
+  console.log("Server run in port ", app.get("port"));
 });
