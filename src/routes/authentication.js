@@ -45,36 +45,25 @@ router.post("/register", async (req, res) => {
     req.flash("data", { name, email });
     res.redirect("/register");
   } else {
-    // const emailUser = await User.findOne({ email: email });
-    // if (emailUser) {
-    //   // res.status(404).json({
-    //   // 	ok: false,
-    //   // 	errors: { text: "El email ya está registrado" },
-    //   // });
-    //   req.flash("error", "El email ya está registrado");
-    //   req.flash("data", { name, email });
-    //   res.redirect("/register");
-    // }
+    const emailUser = await User.findOne({ email: email });
+    if (emailUser) {
+      // res.status(404).json({
+      // 	ok: false,
+      // 	errors: { text: "El email ya está registrado" },
+      // });
+      req.flash("error", "El email ya está registrado");
+      req.flash("data", { name, email });
+      res.redirect("/register");
+    }
 
-    const newUser = { name, email, password };
-    // newUser.password = await newUser.encryptPassword(password);
-    // await newUser.save();
-    const result = await axios({
-      method: "post",
-      url: `${res.locals.API}/register`,
-      data: {
-        name: "Nicolas",
-        email: "Nicolas",
-        password: "Nicolas",
-      },
-    });
+    const newUser = new User({ name, email, password });
+    newUser.password = await newUser.encryptPassword(password);
+    await newUser.save();
 
-    console.log(result);
+    req.flash("success_msg", "Te registraste correctamente");
+    res.redirect("/login");
 
-    // req.flash("success_msg", "Te registraste correctamente");
-    // res.redirect("/login");
-
-    res.json({ ok: true, user: newUser, result: result.data });
+    // res.json({ ok: true, user: newUser });
   }
 });
 
